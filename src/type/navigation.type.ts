@@ -7,6 +7,19 @@ import {
 
 export type RootStackParamList = {
   login: undefined;
+  splashScreen: undefined;
+  dashboard: undefined;
+  bottomTabNavigation: undefined;
+  userScreen: undefined;
+  chatScreen: undefined;
+  userStack: undefined;
+  communityScreen: undefined;
+  statusList: undefined;
+  callList: undefined;
+  settings: undefined;
+  homeScreen: undefined;
+  chatList: undefined;
+  signup: undefined;
 };
 
 export type MainNavigationType = {
