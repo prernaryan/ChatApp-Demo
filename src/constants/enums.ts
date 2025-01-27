@@ -26,7 +26,9 @@ export enum popUpType {
 
 export enum zustandPersistKey {}
 
-export enum asyncStorageKey {}
+export enum asyncStorageKey {
+  User = 'User',
+}
 
 export enum dataType {
   image = 'image',
