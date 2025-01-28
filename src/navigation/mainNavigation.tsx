@@ -2,17 +2,19 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {RootStackParamList} from '../type/navigation.type';
-import TopTabNavigation from './toptabNavigation';
+import HomeScreen from '../screens/HomeScreen';
+import {RouteName} from '../constants';
+import {navigationRef} from '../services/navigationService';
+import WpChatScreen from '../screens/wpChatScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-type Props = {};
-
-const MainNavigation = (props: Props) => {
+const MainNavigation = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <TopTabNavigation />
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name={RouteName.HOMESCREEN} component={HomeScreen} />
+        <Stack.Screen name={RouteName.WPCHATSCREEN} component={WpChatScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

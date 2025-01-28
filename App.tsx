@@ -1,44 +1,19 @@
 import React from 'react';
 import {ThemeProvider} from './src/contextApi/appTheme';
-import {View, StatusBar, StyleSheet} from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-import {Colors} from './src/constants/wpColor';
-import {NavigationContainer} from '@react-navigation/native';
 
-const CustomStatusBar = () => {
-  const insets = useSafeAreaInsets();
-  return (
-    <View
-      style={[
-        styles.statusBar,
-        {height: insets.top, backgroundColor: Colors.primaryColor},
-      ]}>
-      <StatusBar translucent backgroundColor={Colors.primaryColor} />
-    </View>
-  );
-};
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import MainNavigation from './src/navigation/mainNavigation';
+import CustomStatusBar from './src/components/CustomStatusBar';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <ThemeProvider>
-        <SafeAreaProvider>
-          <CustomStatusBar />
-          <HomeScreen />
-          {/* <MainNavigation /> */}
-        </SafeAreaProvider>
-      </ThemeProvider>
-    </NavigationContainer>
+    <ThemeProvider>
+      <SafeAreaProvider>
+        {/* <CustomStatusBar /> */}
+        <MainNavigation />
+      </SafeAreaProvider>
+    </ThemeProvider>
   );
 };
 
 export default App;
-const styles = StyleSheet.create({
-  statusBar: {
-    width: '100%',
-  },
-});

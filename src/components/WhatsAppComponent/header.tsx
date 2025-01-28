@@ -4,12 +4,20 @@ import {ConstNumber, GlobalStyleValues, images} from '../../constants';
 import {Colors} from '../../constants/wpColor';
 import VectorIcon from '../resuableComponent/VectorIcon';
 import {heightPixel, widthPixel} from '../../utils/responsive';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
+  const {top} = useSafeAreaInsets();
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {
+          paddingTop: top,
+          paddingBottom: ConstNumber.VALUE_16,
+          paddingHorizontal: ConstNumber.VALUE_16,
+        },
+      ]}>
       <Image source={images.WHATSAPP_LOGO} style={styles.logo} />
       <View style={styles.headerIcons}>
         <VectorIcon
@@ -41,7 +49,7 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.primaryColor,
-    padding: ConstNumber.VALUE_16,
+
     flexDirection: GlobalStyleValues.ROW,
     justifyContent: GlobalStyleValues.SPACE_BETWEEN,
   },
