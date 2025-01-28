@@ -1,31 +1,44 @@
-import {StyleSheet} from 'react-native';
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import HomeScreen from '../screens/HomeScreen';
-import CommunityScreen from '../screens/CommunityScreen';
-import {RouteName} from '../constants';
-import ChatList from '../screens/ChatList';
-import StatusList from '../screens/StatusList';
-import CallList from '../screens/CallList';
-
-type Props = {};
+import {Colors} from '../constants/wpColor';
+import VectorIcon from '../components/resuableComponent/VectorIcon';
+import {TabBarData} from '../data/tabBarData';
 
 const Tab = createMaterialTopTabNavigator();
 
-const TopTabNavigation = (props: Props) => {
+const TopTabNavigation = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name={RouteName.COMMUNITY_SCREEN}
-        component={CommunityScreen}
-      />
-      <Tab.Screen name={RouteName.CHAT_LIST} component={ChatList} />
-      <Tab.Screen name={RouteName.STATUS_LIST} component={StatusList} />
-      <Tab.Screen name={RouteName.CALL_LIST} component={CallList} />
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: Colors.tertiary,
+        tabBarInactiveTintColor: Colors.secondaryColor,
+        tabBarIndicatorStyle: {backgroundColor: Colors.tertiary},
+        tabBarStyle: {backgroundColor: Colors.primaryColor},
+      }}>
+      {TabBarData.map(({id, name, component}) => (
+        <Tab.Screen
+          key={id}
+          name={name}
+          component={component}
+          options={{
+            tabBarShowLabel: id !== 1,
+            tabBarIcon:
+              id === 1
+                ? ({color}) => (
+                    <VectorIcon
+                      name="users"
+                      size={20}
+                      color={color}
+                      type="FontAwesome"
+                    />
+                  )
+                : undefined,
+          }}
+        />
+      ))}
     </Tab.Navigator>
   );
 };
 
 export default TopTabNavigation;
-
-const styles = StyleSheet.create({});

@@ -1,19 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Header from '../../components/WhatsAppComponent/header';
 import TopTabNavigation from '../../navigation/toptabNavigation';
+import {View} from 'react-native';
+import {StyleBase} from '../../constants';
 
-type Props = {};
-
-const HomeScreen = (props: Props) => {
+const HomeScreen = () => {
   return (
-    <>
+    <View style={StyleBase.flex1}>
       <Header />
       <TopTabNavigation />
-    </>
+    </View>
   );
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({});

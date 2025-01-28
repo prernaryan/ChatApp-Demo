@@ -20,6 +20,7 @@ export type RootStackParamList = {
   homeScreen: undefined;
   chatList: undefined;
   signup: undefined;
+  wpChatScreen: undefined;
 };
 
 export type MainNavigationType = {
